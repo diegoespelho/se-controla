@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Se controla! • Gestão Pessoal de Compras</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="logo-container">
+          <svg
+            class="app-logo-pro"
+            viewBox="0 0 250 50"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xml:space="preserve"
+            style="
+              fill-rule: evenodd;
+              clip-rule: evenodd;
+              stroke-linejoin: round;
+              stroke-miterlimit: 2;
+            ">
+            <g transform="matrix(1,0,0,1,0,-2)">
+              <g id="Icone-Controle" transform="matrix(1,0,0,1,5,7)">
+                <circle cx="18" cy="18" r="18" style="fill: #eaf2f9" />
+                <path
+                  d="M10,24 L10,18"
+                  style="
+                    fill: none;
+                    stroke: #a0aec0;
+                    stroke-width: 2.5;
+                    stroke-linecap: round;
+                  " />
+                <path
+                  d="M14,24 L14,14"
+                  style="
+                    fill: none;
+                    stroke: #a0aec0;
+                    stroke-width: 2.5;
+                    stroke-linecap: round;
+                  " />
+                <path
+                  d="M18,24 L18,10"
+                  style="
+                    fill: none;
+                    stroke: #3182ce;
+                    stroke-width: 2.5;
+                    stroke-linecap: round;
+                  " />
+                <rect
+                  x="22"
+                  y="16"
+                  width="10"
+                  height="8"
+                  rx="1.5"
+                  ry="1.5"
+                  style="fill: #3182ce" />
+                <path
+                  d="M24,16 L24,13 C24,11.343 25.343,10 27,10 C28.657,10 30,11.343 30,13 L30,16"
+                  style="
+                    fill: none;
+                    stroke: #3182ce;
+                    stroke-width: 2;
+                    stroke-linecap: round;
+                  " />
+              </g>
+              <g id="Texto-Nome" transform="matrix(1,0,0,1,55,30)">
+                <text
+                  x="0"
+                  y="-5"
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 700;
+                    font-size: 24px;
+                    fill: #1a202c;
+                  ">
+                  Se controla
+                  <tspan x="135" y="-5" style="fill: #3182ce">!</tspan>
+                </text>
+                <text
+                  x="0"
+                  y="11"
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 400;
+                    font-size: 11px;
+                    fill: #718096;
+                    letter-spacing: 0.5px;
+                  ">
+                  Gestão Pessoal de Compras
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div class="status-card" id="status-card">
+          <div class="status-info">
+            <span class="label">Gasto Total</span>
+            <strong class="total-amount" id="display-total">R$ 0,00</strong>
+          </div>
+          <div class="limit-setting">
+            <label for="limite-usuario">Limite:</label>
+            <input
+              type="number"
+              id="limite-usuario"
+              placeholder="0.00"
+              oninput="salvarLimite()" />
+          </div>
+        </div>
+      </header>
+
+      <main class="app-content">
+        <section class="add-item-form">
+          <div class="input-group">
+            <input type="text" id="nome-item" placeholder="Produto" />
+            <input
+              type="number"
+              id="qtd-item"
+              placeholder="Qtd"
+              value="1"
+              min="1" />
+            <input
+              type="number"
+              id="preco-item"
+              placeholder="R$ Unit."
+              step="0.01" />
+          </div>
+          <button class="btn-add" onclick="adicionar()">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Adicionar à Lista
+          </button>
+        </section>
+
+        <div class="list-container">
+          <h2 class="section-title">Sua Lista</h2>
+          <ul id="lista-produtos" class="product-list"></ul>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

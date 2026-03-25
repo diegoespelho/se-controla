@@ -1,0 +1,316 @@
+/* --- Reset & Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --bg-app: #f4f7f9;
+  --bg-card: #ffffff;
+  --text-primary: #1a202c;
+  --text-secondary: #718096;
+  --color-accent: #3182ce;
+  --color-success: #10b981;
+  --color-warning: #e53e3e;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-md:
+    0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --transition: all 0.2s ease-in-out;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: env(safe-area-inset-top) 15px 20px; /* Suporte a notch de celulares */
+}
+
+/* --- App Shell --- */
+.app-shell {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header & Status Card --- */
+.app-header {
+  padding: 20px 0;
+}
+
+/* --- Novo Estilo da Logo Profissional --- */
+.logo-container {
+  display: flex;
+  justify-content: center; /* Centraliza a logo horizontalmente */
+  align-items: center;
+  padding: 10px 0 20px; /* Dá espaço para o card de status */
+  width: 100%;
+}
+
+.app-logo-pro {
+  width: 100%;
+  max-width: 350px; /* Define o tamanho "grande" mas controlado */
+  height: auto; /* Mantém a proporção */
+  display: block;
+}
+
+/* Ajuste responsivo para telas muito pequenas */
+@media (max-width: 380px) {
+  .app-logo-pro {
+    max-width: 220px;
+  }
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.status-card {
+  background-color: var(--bg-card);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  border-left: 5px solid var(--color-success);
+}
+
+/* Estado de Alerta (Estourou o Limite) */
+.status-card.excedido {
+  border-left-color: var(--color-warning);
+  background-color: #fff0f0;
+}
+
+.status-info .label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.total-amount {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+
+.limit-setting {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.limit-setting input {
+  width: 90px;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.limit-setting input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+/* --- Form & Inputs --- */
+.add-item-form {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+/* O segredo: usar flex-grow para distribuir o espaço sem estourar */
+input[type="text"] {
+  flex: 2; /* Nome ganha mais espaço */
+  min-width: 0;
+}
+
+input#qtd-item {
+  flex: 0.6; /* Quantidade é menor */
+  min-width: 0;
+  text-align: center;
+}
+
+input#preco-item {
+  flex: 1.2; /* Preço intermediário */
+  min-width: 0;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  color: var(--text-primary);
+}
+
+input::placeholder {
+  color: #a0aec0;
+}
+
+input:focus {
+  border-color: var(--color-accent);
+  background-color: #fff;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.btn-add:hover {
+  background-color: #2b6cb0;
+}
+.btn-add:active {
+  transform: translateY(1px);
+}
+
+/* --- Product List --- */
+.list-container {
+  padding-top: 10px;
+}
+
+.section-title {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-left: 5px;
+}
+
+.product-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-item {
+  background-color: var(--bg-card);
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.product-item:hover {
+  border-color: #edf2f7;
+  /* transform: translateX(2px); */
+}
+
+.item-main-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Ícone SVG padrão para itens da lista */
+.item-icon {
+  color: #a0aec0;
+  background-color: #f7fafc;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.item-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.item-price-small {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-price-final {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #e53e3e;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: var(--transition);
+  opacity: 0.5;
+}
+
+.product-item .btn-delete:hover {
+  opacity: 1;
+  background-color: #fff5f5;
+}
+
+/* Responsividade Básica para Desktop */
+@media (max-width: 360px) {
+  .input-group {
+    flex-direction: column; /* Empilha nome e preço em telas minúsculas */
+  }
+  input[type="number"] {
+    width: 100%;
+  }
+}

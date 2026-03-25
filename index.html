@@ -7,12 +7,15 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#3182ce" />
     <title>Se controla! • Gestão Pessoal de Compras</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="favicon.png" />
   </head>
   <body>
     <div class="app-shell">
@@ -161,5 +164,14 @@
       </main>
     </div>
     <script src="script.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("Service Worker registrado com sucesso!"))
+          .catch(err => console.log("Erro ao registrar Service Worker:", err));
+      }
+    </script>
   </body>
 </html>

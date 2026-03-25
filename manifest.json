@@ -1,0 +1,17 @@
+{
+  "name": "Se controla! - Gestão de Compras",
+  "short_name": "Se controla!",
+  "description": "Controle financeiro em tempo real para suas compras.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f7f9",
+  "theme_color": "#3182ce",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
